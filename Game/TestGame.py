@@ -11,4 +11,6 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
+    Blue = pygame.Color(0, 0, 255)
     pygame.display.update()
+    pygame.Surface.set_at((0, 0), Blue)
