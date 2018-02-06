@@ -1,44 +1,48 @@
 import pygame, sys
 from pygame.locals import *
 
-pygame.init()
+# used for setting the resolution of the window
+class windowResolution:
+    width = 600
+    height = 400
 
-# display window
-def display_window():
-    window_width = 1600
-    window_height = 1300
-    window = pygame.display.set_mode((window_width, window_height), 0,32)
+# display the game window
+def displayWindow():
+    pygame.init()
+
+    window_resolution = (600, 400)
+    window = pygame.display.set_mode(window_resolution) # sets the size of the pygame screen
     pygame.display.set_caption('Test')
 
     return window
 
-#rectangles
-def rectangles():
+# draws the all surface objects
+def drawSurfaceObjects(pos_x, pos_y):
+    # gets the display window function
+    window = displayWindow()
 
-    # set up colors
+    # Colors
     color_black = (0, 0, 0)
     color_white = (255, 255, 255)
     color_red = (255, 0, 0)
     color_green = (0, 255, 0)
     color_blue = (0, 0, 255)
 
-    # draw rectangles to screen
-    screen = display_window()
-    screen.fill(color_white)
-    pygame.draw.line(screen, color_red, (120, 60), (0, 0), 5)
+    window.fill(color_blue) # fills the entire surface with the chosen color
+    rectangle = pygame.draw.rect(window, color_green, (pos_x, pos_y, 50, 50))
 
 
 # main game loop
-def game_loop():
+def main():
     while True:
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
                 sys.exit()
-        pygame.display.update()
 
+        pos_x = windowResolution.width / 2
+        pos_y = windowResolution.height / 2
+        surface = drawSurfaceObjects(pos_x, pos_y)
 
-# execution
-display_window()
-rectangles()
-game_loop()
+displayWindow()
+main()
