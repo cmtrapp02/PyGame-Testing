@@ -1,0 +1,17 @@
+import pygame, sys
+from pygame.local
+
+def someFunc():
+	
+	pygame.init()
+	window = pygame.display.set_mode((600, 400))
+	window.fill((0, 0, 255))
+
+	pos_x = 0
+	pos_y = 0
+	while True:
+		pygame.draw.rect(window, (255, 0, 0), (pos_x, pos_y, 50, 50))
+		pos_x += 1
+		pygame.display.update()
+
+someFunc()

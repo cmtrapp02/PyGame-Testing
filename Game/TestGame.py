@@ -34,15 +34,28 @@ def drawSurfaceObjects(pos_x, pos_y):
 
 # main game loop
 def main():
+    pos_x = 0
+    pos_y = 0
+    key = pygame.key.get_pressed()
     while True:
         for event in pygame.event.get():
             if event.type == QUIT:
-                pygame.quit()
+                pygame.quit() 
                 sys.exit()
-
-        pos_x = windowResolution.width / 2
-        pos_y = windowResolution.height / 2
+        
         surface = drawSurfaceObjects(pos_x, pos_y)
+        
+        key = pygame.key.get_pressed()
+        if key[pygame.K_d]:
+            pos_x += .5
+        if key[pygame.K_s]:
+            pos_y += .5
+        if key[pygame.K_a]:
+            pos_x += -.5
+        if key[pygame.K_w]:
+            pos_y += -.5
+        pygame.display.update()
 
 displayWindow()
+#drawSurfaceObjects()
 main()
